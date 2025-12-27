@@ -1,5 +1,6 @@
 import pygame
 from Platforma import Platforma
+from Kulka import Kulka
 
 WYSOKOSC_EKRANU = 800 #400
 SZEROKOSC_EKRANU = 1024 #512
@@ -9,6 +10,7 @@ zegar = pygame.time.Clock()
 obraz_tla = pygame.image.load("images/background.png")
 
 platforma = Platforma()
+kulka = Kulka()
 
 gra_dziala = True 
 while gra_dziala: 
@@ -26,8 +28,12 @@ while gra_dziala:
     if keys[pygame.K_RIGHT]: 
         platforma.ruszaj_platforma(1) 
 
+    kulka.aktualizuj(platforma)
+    platforma.aktualizuj()
+
     ekran.blit(obraz_tla, (0,0)) 
     ekran.blit(platforma.obraz, platforma.rect)
+    ekran.blit(kulka.obraz, kulka.pozycja)
 
     pygame.display.flip() 
     zegar.tick(30) 
