@@ -79,6 +79,14 @@ while gra_dziala:
     if keys[pygame.K_RIGHT]: 
         platforma.ruszaj_platforma(1) 
 
+    if len(klocki.sprites()) == 0:
+        Poziom += 1
+        if Poziom >= 3:
+            break
+        kulka.zresetuj_pozycje()
+        platforma.zresetuj_pozycje()
+        dodaj_klocki()
+
     kulka.aktualizuj(platforma, klocki)
     platforma.aktualizuj()
 
